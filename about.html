@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nas - Agroturystyka BRZOZA | About Us</title>
+    <meta name="description" content="Agroturystyka BRZOZA – 3.5 ha farm near Toruń since 1998. Pool, horses, fishing pond, quad bikes, BBQ and more. Family-friendly agritourism.">
+    <link rel="canonical" href="https://www.bugajski.pl/about.html">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Page hero ─────────────────────────────────── */
+        .page-hero {
+            background-color: var(--color-primary-green);
+            color: var(--color-white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .page-hero h1 { color: var(--color-white); font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.5rem; }
+        .page-hero p  { font-size: 1.1rem; opacity: 0.9; margin: 0; }
+
+        /* ── Intro block ───────────────────────────────── */
+        .about-intro {
+            max-width: 780px;
+            margin: var(--spacing-large) auto;
+            text-align: center;
+        }
+        .about-intro h2 { color: var(--color-primary-green); margin-bottom: 1rem; }
+        .about-intro p  { font-size: 1.05rem; line-height: 1.8; color: var(--color-text-light); }
+
+        /* ── Stats row ─────────────────────────────────── */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-large);
+            flex-wrap: wrap;
+            background-color: var(--color-primary-green);
+            padding: 2.5rem var(--spacing-medium);
+            margin-bottom: var(--spacing-large);
+        }
+        .stat-item { text-align: center; color: var(--color-white); }
+        .stat-number { font-size: 2.2rem; font-weight: 700; display: block; }
+        .stat-label  { font-size: 0.9rem; opacity: 0.85; }
+
+        /* ── Attractions grid ──────────────────────────── */
+        .attractions-section { padding-bottom: var(--spacing-large); }
+        .attractions-section h2 {
+            text-align: center;
+            color: var(--color-primary-green);
+            margin-bottom: var(--spacing-medium);
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-medium);
+        }
+
+        .attraction-card {
+            background: var(--color-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .attraction-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .attraction-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+        .attraction-card-body { padding: 1rem 1.25rem 1.25rem; }
+        .attraction-card-body h3 {
+            color: var(--color-primary-green);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+        .attraction-card-body p {
+            color: var(--color-text-light);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── What's included list ──────────────────────── */
+        .included-section {
+            background-color: var(--color-light-background);
+            padding: var(--spacing-large) 0;
+        }
+        .included-section h2 {
+            text-align: center;
+            color: var(--color-primary-green);
+            margin-bottom: var(--spacing-medium);
+        }
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .included-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--color-text-dark);
+            background: var(--color-white);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .included-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
+        /* ── CTA banner ────────────────────────────────── */
+        .cta-banner {
+            background-color: var(--color-secondary-green);
+            color: var(--color-white);
+            text-align: center;
+            padding: 3rem var(--spacing-medium);
+        }
+        .cta-banner h2 { color: var(--color-white); margin-bottom: 0.75rem; }
+        .cta-banner p  { opacity: 0.92; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .cta-banner .cta-button {
+            background: var(--color-white);
+            color: var(--color-primary-green);
+        }
+        .cta-banner .cta-button:hover { background: var(--color-light-background); }
+
+        /* ── Language utilities ────────────────────────── */
+        .lang-pl-only { display: none; }
+        .lang-en-only { display: none; }
+        body[data-lang="pl"] .lang-pl-only { display: inline; }
+        body[data-lang="pl"] .lang-en-only { display: none; }
+        body[data-lang="en"] .lang-pl-only { display: none; }
+        body[data-lang="en"] .lang-en-only { display: inline; }
+        
+        .lang-block-pl, .lang-block-en { display: none; }
+        body[data-lang="pl"] .lang-block-pl { display: block; }
+        body[data-lang="pl"] .lang-block-en { display: none; }
+        body[data-lang="en"] .lang-block-en { display: block; }
+        body[data-lang="en"] .lang-block-pl { display: none; }
+        
+        .attractions-grid-pl, .attractions-grid-en { display: none; }
+        body[data-lang="pl"] .attractions-grid-pl { display: grid; }
+        body[data-lang="en"] .attractions-grid-en { display: grid; }
+        
+        .included-grid-pl, .included-grid-en { display: none; }
+        body[data-lang="pl"] .included-grid-pl { display: grid; }
+        body[data-lang="en"] .included-grid-en { display: grid; }
+        
+        .hero-sub-pl, .hero-sub-en { display: none; }
+        body[data-lang="pl"] .hero-sub-pl { display: block; }
+        body[data-lang="en"] .hero-sub-en { display: block; }
+        
+        .intro-title-pl, .intro-title-en { display: none; }
+        body[data-lang="pl"] .intro-title-pl { display: block; }
+        body[data-lang="en"] .intro-title-en { display: block; }
+        
+        .intro-text-pl, .intro-text-en { display: none; }
+        body[data-lang="pl"] .intro-text-pl { display: block; }
+        body[data-lang="en"] .intro-text-en { display: block; }
+        
+        .attractions-title-pl, .attractions-title-en { display: none; }
+        body[data-lang="pl"] .attractions-title-pl { display: block; }
+        body[data-lang="en"] .attractions-title-en { display: block; }
+        
+        .included-title-pl, .included-title-en { display: none; }
+        body[data-lang="pl"] .included-title-pl { display: block; }
+        body[data-lang="en"] .included-title-en { display: block; }
+        
+        .cta-banner-pl, .cta-banner-en { display: none; }
+        body[data-lang="pl"] .cta-banner-pl { display: block; }
+        body[data-lang="en"] .cta-banner-en { display: block; }
+        
+        .stat-label-pl, .stat-label-en { display: none; }
+        body[data-lang="pl"] .stat-label-pl { display: inline; }
+        body[data-lang="en"] .stat-label-en { display: inline; }
+    </style>
+</head>
+<body data-lang="pl">
+
+    <!-- ── HEADER ─────────────────────────────────────── -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Agroturystyka BRZOZA</a>
+            <div class="language-selector">
+                <button id="lang-pl" data-lang="pl" class="lang-button active" aria-pressed="true">PL</button>
+                <button id="lang-en" data-lang="en" class="lang-button" aria-pressed="false">EN</button>
+            </div>
+            <nav class="main-nav" aria-label="Main Navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="navigation-menu">
+                    <span class="hamburger-icon" aria-hidden="true">☰</span>
+                    <span class="sr-only">Menu</span>
+                </button>
+                <ul id="navigation-menu" class="nav-list">
+                    <li><a href="index.html"><span class="lang-pl-only">Strona główna</span><span class="lang-en-only">Home</span></a></li>
+                    <li><a href="accommodations.html"><span class="lang-pl-only">Noclegi</span><span class="lang-en-only">Accommodation</span></a></li>
+                    <li><a href="experiences.html"><span class="lang-pl-only">Atrakcje</span><span class="lang-en-only">Experiences</span></a></li>
+                    <li><a href="about.html" aria-current="page"><span class="lang-pl-only">O nas</span><span class="lang-en-only">About</span></a></li>
+                    <li><a href="contact.html" class="nav-cta"><span class="lang-pl-only">Kontakt</span><span class="lang-en-only">Contact</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ── MAIN ──────────────────────────────────────── -->
+    <main>
+
+        <!-- Page hero -->
+        <div class="page-hero">
+            <div class="container">
+                <h1><span class="lang-pl-only">O nas</span><span class="lang-en-only">About Us</span></h1>
+                <p class="hero-sub-pl">Agroturystyka w sercu natury — od 1998 roku</p>
+                <p class="hero-sub-en">Agritourism in the heart of nature — since 1998</p>
+            </div>
+        </div>
+
+        <!-- Intro -->
+        <section class="about-intro container">
+            <h2 class="intro-title-pl">Mały zakątek natury, 10 km od Torunia</h2>
+            <h2 class="intro-title-en">A little corner of nature, 10 km from Toruń</h2>
+            <p class="intro-text-pl">
+                Agroturystyka BRZOZA to rodzinne gospodarstwo o powierzchni <strong>3,5 hektara</strong> położone w cichej 
+                dolinie wiślanej, przekształcone w ośrodek agroturystyczny w <strong>1998 roku</strong>. Gęste drzewa i krzewy 
+                tworzą naturalną barierę przed miejskim hałasem — a jednocześnie jesteśmy zaledwie 10 km od toruńskiej Starówki, 
+                tuż przy trasie nr 91 i autostradzie A1. Niezależnie od tego, czy przyjeżdżasz na weekendowy wypad rodzinny, 
+                pobyt służbowy czy dłuższe wakacje, BRZOZA oferuje przestrzeń, świeże powietrze i mnóstwo atrakcji.
+            </p>
+            <p class="intro-text-en">
+                Agroturystyka BRZOZA is a family-run farm of <strong>3.5 hectares</strong> tucked into a quiet Vistula
+                River valley village, converted into an agritourism retreat in <strong>1998</strong>. Dense trees and
+                shrubs create a natural buffer from city noise — yet we're just 10 km from Toruń Old Town, right off
+                Route 91 and the A1 motorway. Whether you're here for a weekend family break, a team stay, or a longer
+                working holiday, BRZOZA offers space, fresh air, and plenty to do.
+            </p>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-number">1998</span>
+                <span class="stat-label-pl">Rok założenia</span>
+                <span class="stat-label-en">Founded</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">3.5 ha</span>
+                <span class="stat-label-pl">Teren zielony</span>
+                <span class="stat-label-en">Green space</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">30</span>
+                <span class="stat-label-pl">Maksymalna liczba gości</span>
+                <span class="stat-label-en">Guests capacity</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10 km</span>
+                <span class="stat-label-pl">Od centrum Torunia</span>
+                <span class="stat-label-en">From Toruń centre</span>
+            </div>
+        </div>
+
+        <!-- Attractions grid - Polish version -->
+        <section class="attractions-section container">
+            <h2 class="attractions-title-pl">Co znajdziesz na terenie gospodarstwa</h2>
+            <h2 class="attractions-title-en">What's on the Farm</h2>
+            
+            <!-- Polish attractions grid -->
+            <div class="attractions-grid attractions-grid-pl">
+                <article class="attraction-card">
+                    <img src="images/about-pool-1.webp" alt="Odkryty basen na terenie gospodarstwa" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🏊 Basen</h3>
+                        <p>Ochłodź się w naszym odkrytym basenie, usytuowanym wśród drzew, z drewnianym tarasem — idealny na letnie popołudnia.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-horses.webp" alt="Dwa konie na pastwisku" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🐴 Konie i jazda konna</h3>
+                        <p>Poznaj nasze przyjazne konie z bliska. Oferujemy lekcje jazdy, przejażdżki bryczką, kuligi oraz przejażdżki konne z przewodnikiem.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-pond.webp" alt="Staw wędkarski otoczony drzewami" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🎣 Staw wędkarski</h3>
+                        <p>Nasz zarybiony staw jest domem dla karpia, amura i jesiotra. Wypożycz łódkę wiosłową lub rower wodny i ciesz się spokojnym dniem na wodzie.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-quads.webp" alt="Dzieci jeżdżące quadami na torze" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🏍️ Quady</h3>
+                        <p>Dzieci i dorośli uwielbiają nasz tor quadów — kaski zapewnione, trasa przyjazna dla początkujących, wytyczona oponami w leśnym otoczeniu.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-bbq.webp" alt="Duży grill i miejsce na ognisko" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🔥 Grill i ognisko</h3>
+                        <p>Zorganizuj grupowego grilla lub wieczorne ognisko przy naszym wydzielonym palenisku, otoczonym brzozami i miejscami siedzącymi dla dużych grup.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-bouncy.webp" alt="Duża dmuchana zjeżdżalnia dla dzieci" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🎪 Atrakcje dla dzieci</h3>
+                        <p>Dmuchańce, boisko do koszykówki, piłkarzyki, PlayStation, mini boisko do siatkówki i piłki nożnej — dzieci zawsze mają co robić.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- English attractions grid -->
+            <div class="attractions-grid attractions-grid-en">
+                <article class="attraction-card">
+                    <img src="images/about-pool-1.webp" alt="Outdoor swimming pool on the farm grounds" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🏊 Swimming Pool</h3>
+                        <p>Cool off in our outdoor pool, set among the trees with a wooden deck alongside — perfect for summer afternoons.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-horses.webp" alt="Two horses on the farm paddock" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🐴 Horses & Riding</h3>
+                        <p>Meet our friendly horses up close. We offer riding lessons, horse-drawn carriage rides, sleigh rides, and guided tours on horseback.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-pond.webp" alt="Fishing pond surrounded by trees" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🎣 Fishing Pond</h3>
+                        <p>Our stocked pond is home to carp, grass carp, and sturgeon. Rent a rowing boat or pedalo and enjoy a peaceful day on the water.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-quads.webp" alt="Children riding quad bikes on a dirt track" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🏍️ Quad Bikes</h3>
+                        <p>Kids and adults love our quad bike track — helmets provided, beginner-friendly course laid out with tyres in a wooded setting.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-bbq.webp" alt="Large outdoor BBQ grill and fire pit" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🔥 BBQ & Bonfire</h3>
+                        <p>Host a group BBQ or evening bonfire at our dedicated fire pit, surrounded by birch trees and outdoor seating for large gatherings.</p>
+                    </div>
+                </article>
+
+                <article class="attraction-card">
+                    <img src="images/about-bouncy.webp" alt="Large inflatable bouncy castle slide for children" loading="lazy">
+                    <div class="attraction-card-body">
+                        <h3>🎪 Kids' Attractions</h3>
+                        <p>Bouncy castles, a basketball court, table football, PlayStation, mini volleyball & football pitch — children are always entertained.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- What's included - Polish version -->
+        <section class="included-section">
+            <div class="container">
+                <h2 class="included-title-pl">Co w cenie / dostępne</h2>
+                <h2 class="included-title-en">Everything Included</h2>
+                
+                <!-- Polish included grid -->
+                <div class="included-grid included-grid-pl">
+                    <div class="included-item"><span class="included-icon">📶</span> Darmowe Wi-Fi na terenie całego gospodarstwa</div>
+                    <div class="included-item"><span class="included-icon">🅿️</span> Darmowy parking na miejscu</div>
+                    <div class="included-item"><span class="included-icon">🚲</span> Wypożyczalnia rowerów</div>
+                    <div class="included-item"><span class="included-icon">🎯</span> Strzelnica pneumatyczna</div>
+                    <div class="included-item"><span class="included-icon">⚽</span> Boiska sportowe</div>
+                    <div class="included-item"><span class="included-icon">🐄</span> Zwierzęta gospodarskie do zwiedzania</div>
+                    <div class="included-item"><span class="included-icon">🛶</span> Łodzie i rowery wodne</div>
+                    <div class="included-item"><span class="included-icon">🍳</span> Dostęp do kuchni wspólnej</div>
+                    <div class="included-item"><span class="included-icon">📺</span> Telewizor we wszystkich pokojach</div>
+                    <div class="included-item"><span class="included-icon">☀️</span> Energia słoneczna</div>
+                </div>
+                
+                <!-- English included grid -->
+                <div class="included-grid included-grid-en">
+                    <div class="included-item"><span class="included-icon">📶</span> Free Wi-Fi across the farm</div>
+                    <div class="included-item"><span class="included-icon">🅿️</span> Free on-site parking</div>
+                    <div class="included-item"><span class="included-icon">🚲</span> Bicycle hire</div>
+                    <div class="included-item"><span class="included-icon">🎯</span> Pneumatic shooting range</div>
+                    <div class="included-item"><span class="included-icon">⚽</span> Sports fields</div>
+                    <div class="included-item"><span class="included-icon">🐄</span> Farm animals to visit</div>
+                    <div class="included-item"><span class="included-icon">🛶</span> Boats & pedal boats</div>
+                    <div class="included-item"><span class="included-icon">🍳</span> Shared kitchen access</div>
+                    <div class="included-item"><span class="included-icon">📺</span> TV in all rooms</div>
+                    <div class="included-item"><span class="included-icon">☀️</span> Solar-powered energy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA banner -->
+        <div class="cta-banner">
+            <div class="container">
+                <div class="cta-banner-pl">
+                    <h2>Gotowy na wizytę?</h2>
+                    <p>Sprawdź dostępność terminów lub skontaktuj się z nami — chętnie odpowiemy na wszystkie pytania.</p>
+                    <a href="contact.html" class="cta-button">Skontaktuj się &rarr;</a>
+                </div>
+                <div class="cta-banner-en">
+                    <h2>Ready to visit?</h2>
+                    <p>Check availability for your dates or get in touch — we're happy to answer any questions.</p>
+                    <a href="contact.html" class="cta-button">Contact Us &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ── FOOTER (bilingual) ─────────────────────────────────────── -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Agroturystyka BRZOZA</h4>
+                <p class="lang-pl-only">Noclegi Toruń. Komfortowy wypoczynek i niezapomniane atrakcje dla grup i rodzin.</p>
+                <p class="lang-en-only">Accommodation Toruń. Affordable stays and memorable recreational events for groups and families.</p>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-pl-only">Szybkie linki</span><span class="lang-en-only">Quick Links</span></h4>
+                <ul>
+                    <li><a href="accommodations.html"><span class="lang-pl-only">Noclegi</span><span class="lang-en-only">Accommodation</span></a></li>
+                    <li><a href="experiences.html"><span class="lang-pl-only">Atrakcje</span><span class="lang-en-only">Experiences</span></a></li>
+                    <li><a href="contact.html"><span class="lang-pl-only">Kontakt</span><span class="lang-en-only">Contact</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-pl-only">Kontakt</span><span class="lang-en-only">Contact</span></h4>
+                <p>Email: <a href="mailto:info@bugajski.pl">info@bugajski.pl</a></p>
+                <p>Phone: <a href="tel:+48XXXXXXXXX">+48 601845955</a></p>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-pl-only">Obserwuj nas</span><span class="lang-en-only">Follow Us</span></h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Agroturystyka-Brzoza/100063647692455/#"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Visit Agroturystyka BRZOZA on Facebook"
+                       class="social-icon facebook-icon">
+                        Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year"></span> Agroturystyka BRZOZA. <span class="lang-pl-only">Wszelkie prawa zastrzeżone.</span><span class="lang-en-only">All rights reserved.</span> | <a href="https://www.bugajski.pl">www.bugajski.pl</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        // Mobile nav
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navigation-menu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('nav-open');
+            });
+        }
+
+        // Language switching
+        const body = document.body;
+        const langPlBtn = document.getElementById('lang-pl');
+        const langEnBtn = document.getElementById('lang-en');
+
+        function setLanguage(lang) {
+            body.setAttribute('data-lang', lang);
+            if (lang === 'pl') {
+                langPlBtn.classList.add('active');
+                langPlBtn.setAttribute('aria-pressed', 'true');
+                langEnBtn.classList.remove('active');
+                langEnBtn.setAttribute('aria-pressed', 'false');
+                document.documentElement.lang = 'pl';
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Agroturystyka BRZOZA – 3,5 ha gospodarstwo pod Toruniem od 1998 roku. Basen, konie, staw wędkarski, quady, grill i wiele więcej. Przyjazna agroturystyka dla rodzin.');
+                document.title = 'O nas - Agroturystyka BRZOZA | About Us';
+            } else {
+                langEnBtn.classList.add('active');
+                langEnBtn.setAttribute('aria-pressed', 'true');
+                langPlBtn.classList.remove('active');
+                langPlBtn.setAttribute('aria-pressed', 'false');
+                document.documentElement.lang = 'en';
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Agroturystyka BRZOZA – 3.5 ha farm near Toruń since 1998. Pool, horses, fishing pond, quad bikes, BBQ and more. Family-friendly agritourism.');
+                document.title = 'About Us - Agroturystyka BRZOZA | About Us';
+            }
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        langPlBtn.addEventListener('click', () => setLanguage('pl'));
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+
+        const savedLang = localStorage.getItem('preferredLang');
+        if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
+            setLanguage(savedLang);
+        } else {
+            setLanguage('pl');
+        }
+    </script>
+
+</body>
+</html>

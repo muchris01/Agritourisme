@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Noclegi - Agroturystyka BRZOZA | Domek Toruń</title>
+    <meta name="description" data-i18n="meta.description" content="Wynajem domku 50m² na agroturystyce pod Toruniem. 2 pokoje, kuchnia, łazienka dla 4-6 osób. 200 PLN/noc. 10 km od centrum Torunia.">
+    <link rel="canonical" href="https://www.bugajski.pl/accommodations.html">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Agroturystyka BRZOZA",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ciechocińska 23",
+            "addressLocality": "Toruń",
+            "postalCode": "87-103",
+            "addressCountry": "PL"
+        },
+        "telephone": "+48-601-845-955",
+        "email": "info@bugajski.pl",
+        "priceRange": "200 PLN",
+        "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true}
+        ]
+    }
+    </script>
+</head>
+<body data-lang="pl">
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Agroturystyka BRZOZA</a>
+
+            <div class="language-selector" role="group" aria-label="Language selection">
+                <button id="lang-pl" data-lang="pl" class="lang-button active" aria-pressed="true">PL</button>
+                <button id="lang-en" data-lang="en" class="lang-button" aria-pressed="false">EN</button>
+            </div>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="navigation-menu">
+                    <span class="hamburger-icon" aria-hidden="true">☰</span>
+                    <span class="sr-only">Menu</span>
+                </button>
+                <ul id="navigation-menu" class="nav-list">
+                    <li><a href="index.html" data-i18n="nav.home">Strona główna</a></li>
+                    <li><a href="accommodations.html" aria-current="page" data-i18n="nav.accommodations">Noclegi</a></li>
+                    <li><a href="experiences.html" data-i18n="nav.experiences">Atrakcje</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">O nas</a></li>
+                    <li><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN ==================== -->
+    <main>
+        <div class="page-hero">
+            <div class="container">
+                <h1 data-i18n="page.title">Noclegi</h1>
+                <p data-i18n="page.subtitle">Komfortowy wypoczynek pod Toruniem</p>
+            </div>
+        </div>
+
+        <section class="container" id="firm" aria-labelledby="listing-heading">
+            <div class="listing-card">
+                <!-- Header -->
+                <div class="listing-header">
+                    <h2 id="listing-heading" data-i18n="listing.title">🏡 Cały domek – 2 pokoje, kuchnia i łazienka – do 6 osób</h2>
+                    <div class="price-badge" data-i18n="listing.price">200 PLN / noc</div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="photo-gallery" role="list" aria-label="Property photos">
+                    <div class="photo-item" role="listitem" data-index="0">
+                        <img src="images/cottage-exterior-1.webp" alt="Exterior of the cottage surrounded by trees" loading="eager">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="1">
+                        <img src="images/cottage-exterior-2.webp" alt="Front view of the cottage with picnic bench" loading="lazy">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="2">
+                        <img src="images/cottage-room-twin.webp" alt="Twin bedroom with two single beds and round table" loading="lazy">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="3">
+                        <img src="images/cottage-room-single.webp" alt="Single bedroom with wardrobe and dining table" loading="lazy">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="4">
+                        <img src="images/cottage-kitchen-1.webp" alt="Kitchen with microwave, kettle and wooden cabinets" loading="lazy">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="5">
+                        <img src="images/cottage-kitchen-2.webp" alt="Kitchen with fridge, washing machine and sink" loading="lazy">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="6">
+                        <img src="images/cottage-bathroom-sink.webp" alt="Bathroom with marble-effect tiles and sink" loading="lazy">
+                    </div>
+                    <div class="photo-item" role="listitem" data-index="7">
+                        <img src="images/cottage-bathroom-shower.webp" alt="Bathroom with shower cabin and toilet" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Body content -->
+                <div class="listing-body">
+                    <p class="listing-description" data-i18n-html="listing.description">
+                        Przytulny <strong>domek o powierzchni 50 m²</strong> na terenie gospodarstwa agroturystycznego,
+                        zaledwie <strong>10 km od toruńskiej Starówki</strong> i 200 m od drogi nr 91.
+                        Cały domek jest do wyłącznej dyspozycji – dwa komfortowe pokoje mieszczące do 6 osób,
+                        w pełni wyposażona kuchnia oraz prywatna łazienka. Idealne miejsce dla rodzin, grup przyjaciół
+                        lub ekip pracowniczych, które szukają czystej, niedrogiej bazy pod Toruniem.
+                        Darmowy parking na miejscu.
+                    </p>
+
+                    <!-- Amenities -->
+                    <div class="amenities-grid" aria-label="Amenities" id="amenities-container">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Minimum stay -->
+                    <p style="color: var(--color-text-light); font-size: 0.95rem; margin-bottom: var(--spacing-small);"
+                       data-i18n-html="listing.minStay">
+                        ⚠️ <strong>Minimalny pobyt: 2 noce.</strong> Cena dotyczy całego domku niezależnie od liczby gości (maks. 6 osób).
+                    </p>
+
+                    <!-- Discounts -->
+                    <div class="discount-box">
+                        <h3 data-i18n="discounts.title">💰 Zniżki za dłuższy pobyt</h3>
+                        <ul id="discounts-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="listing-cta">
+                        <a href="contact.html" class="cta-button" data-i18n="cta.book">📩 Zarezerwuj / Zapytaj</a>
+                        <a href="tel:+48601845955" class="secondary-button" data-i18n="cta.call">📞 Zadzwoń</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Agroturystyka BRZOZA</h4>
+                <p data-i18n="footer.tagline">Noclegi Toruń. Komfortowy wypoczynek i niezapomniane atrakcje dla grup i rodzin.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer.quickLinks">Szybkie linki</h4>
+                <ul>
+                    <li><a href="accommodations.html" data-i18n="nav.accommodations">Noclegi</a></li>
+                    <li><a href="experiences.html" data-i18n="nav.experiences">Atrakcje</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="nav.contact">Kontakt</h4>
+                <p>Email: <a href="mailto:robert@bugajski.pl">robert@bugajski.pl</a></p>
+                <p>Tel: <a href="tel:+48601845955">+48 601 845 955</a></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer.followUs">Obserwuj nas</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Agroturystyka-Brzoza/100063647692455/#" target="_blank" rel="noopener noreferrer" aria-label="Visit Agroturystyka BRZOZA on Facebook">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year"></span> Agroturystyka BRZOZA. <span data-i18n="footer.rights">Wszelkie prawa zastrzeżone.</span> | <a href="https://www.bugajski.pl">www.bugajski.pl</a></p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button class="lightbox-close" id="lb-close" aria-label="Close photo viewer">&times;</button>
+        <button class="lightbox-prev" id="lb-prev" aria-label="Previous photo">&#8249;</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lightbox-next" id="lb-next" aria-label="Next photo">&#8250;</button>
+    </div>
+
+    <script>
+        // ============================================================
+        //  TRANSLATIONS
+        // ============================================================
+        const TRANSLATIONS = {
+            pl: {
+                'meta.title': 'Noclegi - Agroturystyka BRZOZA | Domek Toruń',
+                'meta.description': 'Wynajem domku 50m² na agroturystyce pod Toruniem. 2 pokoje, kuchnia, łazienka dla 4-6 osób. 200 PLN/noc. 10 km od centrum Torunia.',
+
+                'nav.home': 'Strona główna',
+                'nav.accommodations': 'Noclegi',
+                'nav.experiences': 'Atrakcje',
+                'nav.about': 'O nas',
+                'nav.contact': 'Kontakt',
+
+                'page.title': 'Noclegi',
+                'page.subtitle': 'Komfortowy wypoczynek pod Toruniem',
+
+                'listing.title': '🏡 Cały domek – 2 pokoje, kuchnia i łazienka – do 6 osób',
+                'listing.price': '200 PLN / noc',
+                'listing.description': `Przytulny <strong>domek o powierzchni 50 m²</strong> na terenie gospodarstwa agroturystycznego,
+                    zaledwie <strong>10 km od toruńskiej Starówki</strong> i 200 m od drogi nr 91.
+                    Cały domek jest do wyłącznej dyspozycji – dwa komfortowe pokoje mieszczące do 6 osób,
+                    w pełni wyposażona kuchnia oraz prywatna łazienka. Idealne miejsce dla rodzin, grup przyjaciół
+                    lub ekip pracowniczych, które szukają czystej, niedrogiej bazy pod Toruniem.
+                    Darmowy parking na miejscu.`,
+                'listing.minStay': '⚠️ <strong>Minimalny pobyt: 2 noce.</strong> Cena dotyczy całego domku niezależnie od liczby gości (maks. 6 osób).',
+
+                'amenities': [
+                    { icon: '🛏️', label: 'Pościel w cenie' },
+                    { icon: '🌡️', label: 'Ogrzewanie' },
+                    { icon: '🚿', label: 'Ciepła woda' },
+                    { icon: '📶', label: 'Wi-Fi' },
+                    { icon: '🫧', label: 'Pralka' },
+                    { icon: '🌬️', label: 'Suszarka do ubrań' },
+                    { icon: '❄️', label: 'Lodówka' },
+                    { icon: '🍳', label: 'Wyposażona kuchnia' },
+                    { icon: '🚗', label: 'Darmowy parking' },
+                    { icon: '👨‍👩‍👧', label: 'Przyjazne rodzinom' }
+                ],
+
+                'discounts.title': '💰 Zniżki za dłuższy pobyt',
+                'discounts.items': [
+                    { label: 'Pełny tydzień', value: '30% zniżki' },
+                    { label: 'Pełny miesiąc', value: '50% zniżki' },
+                    { label: 'Dłuższe pobyty', value: 'cena do negocjacji' }
+                ],
+
+                'cta.book': '📩 Zarezerwuj / Zapytaj',
+                'cta.call': '📞 Zadzwoń',
+
+                'footer.tagline': 'Noclegi Toruń. Komfortowy wypoczynek i niezapomniane atrakcje dla grup i rodzin.',
+                'footer.quickLinks': 'Szybkie linki',
+                'footer.followUs': 'Obserwuj nas',
+                'footer.rights': 'Wszelkie prawa zastrzeżone.'
+            },
+
+            en: {
+                'meta.title': 'Accommodation - Agroturystyka BRZOZA | Cottage Toruń',
+                'meta.description': 'Rent a 50m² cottage on an agritourism farm near Toruń. 2 bedrooms, kitchen, bathroom for 4-6 people. 200 PLN/night. 10 km from Toruń Old Town.',
+
+                'nav.home': 'Home',
+                'nav.accommodations': 'Accommodation',
+                'nav.experiences': 'Experiences',
+                'nav.about': 'About',
+                'nav.contact': 'Contact',
+
+                'page.title': 'Accommodation',
+                'page.subtitle': 'Comfortable stays near Toruń',
+
+                'listing.title': '🏡 Entire House – 2 Bedrooms, Kitchen & Bathroom – Up to 6 Guests',
+                'listing.price': '200 PLN / night',
+                'listing.description': `A cosy <strong>50 m² cottage</strong> on an agritourism farm, just <strong>10 km from Toruń Old Town</strong>
+                    and 200 m from Route 91. The whole house is yours — two comfortable rooms sleeping up to 6,
+                    a fully equipped kitchen, and a private bathroom. Perfect for families, friend groups, or work crews
+                    needing a clean, affordable base near Toruń. Free parking on site.`,
+                'listing.minStay': '⚠️ <strong>Minimum stay: 2 nights.</strong> Price is for the entire cottage regardless of guest count (max 6 people).',
+
+                'amenities': [
+                    { icon: '🛏️', label: 'Bedding included' },
+                    { icon: '🌡️', label: 'Heating' },
+                    { icon: '🚿', label: 'Hot water' },
+                    { icon: '📶', label: 'Wi-Fi' },
+                    { icon: '🫧', label: 'Washing machine' },
+                    { icon: '🌬️', label: 'Clothes dryer' },
+                    { icon: '❄️', label: 'Refrigerator' },
+                    { icon: '🍳', label: 'Equipped kitchen' },
+                    { icon: '🚗', label: 'Free parking' },
+                    { icon: '👨‍👩‍👧', label: 'Family friendly' }
+                ],
+
+                'discounts.title': '💰 Long-stay discounts',
+                'discounts.items': [
+                    { label: 'Full week', value: '30% off' },
+                    { label: 'Full month', value: '50% off' },
+                    { label: 'Longer stays', value: 'price negotiable' }
+                ],
+
+                'cta.book': '📩 Book / Enquire',
+                'cta.call': '📞 Call Us',
+
+                'footer.tagline': 'Accommodation Toruń. Affordable stays and memorable recreational events for groups and families.',
+                'footer.quickLinks': 'Quick Links',
+                'footer.followUs': 'Follow Us',
+                'footer.rights': 'All rights reserved.'
+            }
+        };
+
+        // ============================================================
+        //  i18n ENGINE
+        // ============================================================
+        let currentLang = localStorage.getItem('preferredLang') || 'pl';
+
+        function t(key) {
+            return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) 
+                ?? (TRANSLATIONS['pl'][key] ?? key);
+        }
+
+        function applyTranslations() {
+            const lang = currentLang;
+            const strings = TRANSLATIONS[lang];
+
+            document.documentElement.lang = lang;
+            document.body.setAttribute('data-lang', lang);
+            document.title = t('meta.title');
+
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                el.textContent = t(el.dataset.i18n);
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                el.innerHTML = t(el.dataset.i18nHtml);
+            });
+
+            // Amenities list
+            const amenitiesContainer = document.getElementById('amenities-container');
+            if (amenitiesContainer && strings.amenities) {
+                amenitiesContainer.innerHTML = strings.amenities.map(item =>
+                    `<div class="amenity-item">
+                        <span class="amenity-icon">${item.icon}</span> ${item.label}
+                    </div>`
+                ).join('');
+            }
+
+            // Discounts list
+            const discountsList = document.getElementById('discounts-list');
+            if (discountsList && strings['discounts.items']) {
+                discountsList.innerHTML = strings['discounts.items'].map(item =>
+                    `<li>${item.label} <span>&mdash;</span> <strong>${item.value}</strong></li>`
+                ).join('');
+            }
+
+            document.querySelectorAll('.lang-button').forEach(btn => {
+                const isActive = btn.dataset.lang === lang;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+        }
+
+        document.querySelectorAll('.lang-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentLang = btn.dataset.lang;
+                localStorage.setItem('preferredLang', currentLang);
+                applyTranslations();
+            });
+        });
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        applyTranslations();
+
+        // Mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navigation-menu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('nav-open');
+            });
+        }
+
+        // ============================================================
+        //  LIGHTBOX
+        // ============================================================
+        const photos = Array.from(document.querySelectorAll('.photo-item img'));
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lbImg.src = photos[index].src;
+            lbImg.alt = photos[index].alt;
+            lightbox.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('lb-close').focus();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+
+        function showPhoto(index) {
+            currentIndex = (index + photos.length) % photos.length;
+            lbImg.src = photos[currentIndex].src;
+            lbImg.alt = photos[currentIndex].alt;
+        }
+
+        document.querySelectorAll('.photo-item').forEach((item, i) => {
+            item.addEventListener('click', () => openLightbox(i));
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(i);
+                }
+            });
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+            item.setAttribute('aria-label', `View photo ${i + 1} of ${photos.length}`);
+        });
+
+        document.getElementById('lb-close').addEventListener('click', closeLightbox);
+        document.getElementById('lb-prev').addEventListener('click', () => showPhoto(currentIndex - 1));
+        document.getElementById('lb-next').addEventListener('click', () => showPhoto(currentIndex + 1));
+        
+        lightbox.addEventListener('click', e => { 
+            if (e.target === lightbox) closeLightbox(); 
+        });
+        
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
+            if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+        });
+    </script>
+</body>
+</html>

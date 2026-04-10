@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences - Agroturystyka BRZOZA | Atrakcje Toruń</title>
+    <meta name="description" content="Quad bikes, horse riding, fishing, swimming pool, BBQ, bouncy castles and more. Family and group activities at Agroturystyka BRZOZA near Toruń.">
+    <link rel="canonical" href="https://www.bugajski.pl/experiences.html">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Page hero (replaced green box with image banner - same dimensions) ── */
+        .page-hero {
+            background-color: var(--color-primary-green);
+            color: var(--color-white);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            background-image: url('images/hero-banner-wide.webp');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+        }
+        /* Dark overlay for text readability, maintaining original feel */
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .page-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        .page-hero h1 { 
+            color: var(--color-white); 
+            font-size: clamp(1.8rem, 4vw, 2.8rem); 
+            margin-bottom: 0.5rem;
+        }
+        .page-hero p  { 
+            font-size: 1.1rem; 
+            opacity: 0.9; 
+            margin: 0;
+        }
+
+        /* ── Tab navigation ────────────────────────────── */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: var(--spacing-medium) var(--spacing-small);
+            background: var(--color-light-background);
+            border-bottom: 2px solid #e0e0e0;
+            position: sticky;
+            top: 64px;
+            z-index: 100;
+        }
+        .tab-btn {
+            background: var(--color-white);
+            border: 2px solid var(--color-secondary-green);
+            color: var(--color-secondary-green);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--color-secondary-green);
+            color: var(--color-white);
+        }
+
+        /* ── Tab panels ────────────────────────────────── */
+        .tab-panel { display: none; }
+        .tab-panel.is-active { display: block; }
+
+        /* ── Section titles ────────────────────────────── */
+        .section-title {
+            text-align: center;
+            color: var(--color-primary-green);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-large);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ── Activity cards grid ───────────────────────── */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-medium);
+            margin-bottom: var(--spacing-large);
+        }
+
+        .activity-card {
+            background: var(--color-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .activity-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .activity-card-body { padding: 1.25rem; }
+        .activity-card-body h3 {
+            color: var(--color-primary-green);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .activity-card-body p {
+            color: var(--color-text-light);
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin: 0 0 1rem;
+        }
+
+        /* ── Featured activity (wide card) ─────────────── */
+        .activity-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .activity-card.featured img {
+            height: 100%;
+            min-height: 220px;
+        }
+        .activity-card.featured .activity-card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--spacing-medium);
+        }
+
+        /* ── No-photo activity items ───────────────────── */
+        .activity-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: var(--spacing-large);
+        }
+        .activity-list-item {
+            background: var(--color-white);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .activity-list-item .icon { font-size: 1.4rem; flex-shrink: 0; }
+        .activity-list-item h4 { font-size: 0.95rem; color: var(--color-text-dark); margin-bottom: 0.2rem; }
+        .activity-list-item p  { font-size: 0.85rem; color: var(--color-text-light); margin: 0; }
+
+        /* ── Events tab ────────────────────────────────── */
+        .event-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-medium);
+            margin-bottom: var(--spacing-large);
+        }
+        .event-package {
+            background: var(--color-white);
+            border-radius: 10px;
+            padding: var(--spacing-medium);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border-top: 4px solid var(--color-secondary-green);
+            transition: transform 0.3s ease;
+        }
+        .event-package:hover { transform: translateY(-4px); }
+        .event-package h3 {
+            color: var(--color-primary-green);
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .event-package ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.25rem;
+        }
+        .event-package ul li {
+            font-size: 0.93rem;
+            color: var(--color-text-light);
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--color-light-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+        .event-package ul li::before { content: "✓"; color: var(--color-secondary-green); font-weight: 700; }
+
+        /* ── Divider ───────────────────────────────────── */
+        .section-divider {
+            border: none;
+            border-top: 2px solid var(--color-light-background);
+            margin: var(--spacing-large) 0;
+        }
+
+        /* ── CTA banner ────────────────────────────────── */
+        .cta-banner {
+            background-color: var(--color-primary-green);
+            color: var(--color-white);
+            text-align: center;
+            padding: 3rem var(--spacing-medium);
+        }
+        .cta-banner h2 { color: var(--color-white); margin-bottom: 0.75rem; }
+        .cta-banner p  { opacity: 0.92; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .cta-banner .cta-button {
+            background: var(--color-white);
+            color: var(--color-primary-green);
+        }
+        .cta-banner .cta-button:hover { background: var(--color-light-background); }
+
+        /* ── Language utilities ────────────────────────── */
+        .lang-pl-only { display: none; }
+        .lang-en-only { display: none; }
+        body[data-lang="pl"] .lang-pl-only { display: inline; }
+        body[data-lang="pl"] .lang-en-only { display: none; }
+        body[data-lang="en"] .lang-pl-only { display: none; }
+        body[data-lang="en"] .lang-en-only { display: inline; }
+        
+        .lang-block-pl, .lang-block-en { display: none; }
+        body[data-lang="pl"] .lang-block-pl { display: block; }
+        body[data-lang="pl"] .lang-block-en { display: none; }
+        body[data-lang="en"] .lang-block-en { display: block; }
+        body[data-lang="en"] .lang-block-pl { display: none; }
+        
+        .activities-pl, .activities-en { display: none; }
+        body[data-lang="pl"] .activities-pl { display: grid; }
+        body[data-lang="en"] .activities-en { display: grid; }
+        
+        .event-packages-pl, .event-packages-en { display: none; }
+        body[data-lang="pl"] .event-packages-pl { display: grid; }
+        body[data-lang="en"] .event-packages-en { display: grid; }
+        
+        .activity-list-pl, .activity-list-en { display: none; }
+        body[data-lang="pl"] .activity-list-pl { display: grid; }
+        body[data-lang="en"] .activity-list-en { display: grid; }
+        
+        .hero-sub-pl, .hero-sub-en { display: none; }
+        body[data-lang="pl"] .hero-sub-pl { display: block; }
+        body[data-lang="en"] .hero-sub-en { display: block; }
+        
+        .tab-btn-pl, .tab-btn-en { display: none; }
+        body[data-lang="pl"] .tab-btn-pl { display: block; }
+        body[data-lang="en"] .tab-btn-en { display: block; }
+        
+        .section-title-pl, .section-title-en { display: none; }
+        body[data-lang="pl"] .section-title-pl { display: block; }
+        body[data-lang="en"] .section-title-en { display: block; }
+        
+        .section-subtitle-pl, .section-subtitle-en { display: none; }
+        body[data-lang="pl"] .section-subtitle-pl { display: block; }
+        body[data-lang="en"] .section-subtitle-en { display: block; }
+        
+        .cta-banner-pl, .cta-banner-en { display: none; }
+        body[data-lang="pl"] .cta-banner-pl { display: block; }
+        body[data-lang="en"] .cta-banner-en { display: block; }
+        
+        .tip-box-pl, .tip-box-en { display: none; }
+        body[data-lang="pl"] .tip-box-pl { display: block; }
+        body[data-lang="en"] .tip-box-en { display: block; }
+
+        /* ── Responsive ────────────────────────────────── */
+        @media (max-width: 768px) {
+            .activity-card.featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+            .activity-card.featured img {
+                height: 220px;
+            }
+            .tab-nav { top: 56px; }
+        }
+    </style>
+</head>
+<body style="background-color: var(--color-light-background);" data-lang="pl">
+
+    <!-- ── HEADER ─────────────────────────────────────── -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Agroturystyka BRZOZA</a>
+            <div class="language-selector">
+                <button id="lang-pl" data-lang="pl" class="lang-button active" aria-pressed="true">PL</button>
+                <button id="lang-en" data-lang="en" class="lang-button" aria-pressed="false">EN</button>
+            </div>
+            <nav class="main-nav" aria-label="Main Navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="navigation-menu">
+                    <span class="hamburger-icon" aria-hidden="true">☰</span>
+                    <span class="sr-only">Menu</span>
+                </button>
+                <ul id="navigation-menu" class="nav-list">
+                    <li><a href="index.html"><span class="lang-pl-only">Strona główna</span><span class="lang-en-only">Home</span></a></li>
+                    <li><a href="accommodations.html"><span class="lang-pl-only">Noclegi</span><span class="lang-en-only">Accommodation</span></a></li>
+                    <li><a href="experiences.html" aria-current="page"><span class="lang-pl-only">Atrakcje</span><span class="lang-en-only">Experiences</span></a></li>
+                    <li><a href="about.html"><span class="lang-pl-only">O nas</span><span class="lang-en-only">About</span></a></li>
+                    <li><a href="contact.html" class="nav-cta"><span class="lang-pl-only">Kontakt</span><span class="lang-en-only">Contact</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ── MAIN ──────────────────────────────────────── -->
+    <main>
+
+        <!-- Page hero: image banner with exact same dimensions as original green box -->
+        <div class="page-hero">
+            <div class="container">
+                <h1><span class="lang-pl-only">Atrakcje i przeżycia</span><span class="lang-en-only">Experiences &amp; Attractions</span></h1>
+                <p class="hero-sub-pl">Coś dla każdego — dzieci, rodziny, grupy i miłośnicy natury</p>
+                <p class="hero-sub-en">Something for everyone — kids, families, groups, and nature lovers</p>
+            </div>
+        </div>
+
+        <!-- Tab navigation (bilingual buttons) -->
+        <nav class="tab-nav" aria-label="Experience categories">
+            <button class="tab-btn tab-btn-pl active" data-tab="outdoor">🌿 Na świeżym powietrzu</button>
+            <button class="tab-btn tab-btn-pl" data-tab="kids">🧒 Dla dzieci</button>
+            <button class="tab-btn tab-btn-pl" data-tab="events">🎉 Eventy i grupy</button>
+            <button class="tab-btn tab-btn-pl" data-tab="indoor">🏠 Wewnątrz / Deszczowe dni</button>
+            
+            <button class="tab-btn tab-btn-en active" data-tab="outdoor">🌿 Outdoor &amp; Active</button>
+            <button class="tab-btn tab-btn-en" data-tab="kids">🧒 Kids' Fun</button>
+            <button class="tab-btn tab-btn-en" data-tab="events">🎉 Events &amp; Groups</button>
+            <button class="tab-btn tab-btn-en" data-tab="indoor">🏠 Indoor &amp; Rainy Days</button>
+        </nav>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- TAB 1 — Outdoor & Active (Polish/English) -->
+        <!-- ════════════════════════════════════════ -->
+        <div class="tab-panel is-active" id="tab-outdoor">
+            <section class="container padding-y-large">
+                <h2 class="section-title-pl">Na świeżym powietrzu &amp; Aktywny wypoczynek</h2>
+                <h2 class="section-title-en">Outdoor &amp; Active</h2>
+                <p class="section-subtitle-pl">
+                    3,5 hektara zieleni oznacza, że zawsze jest miejsce do odkrywania, jazdy konnej, wędkowania lub po prostu relaksu przy basenie.
+                </p>
+                <p class="section-subtitle-en">
+                    3.5 hectares of green space means there's always room to explore, ride, fish, or simply relax by the pool.
+                </p>
+
+                <!-- Polish activities grid -->
+                <div class="activities-grid activities-pl">
+                    <article class="activity-card featured">
+                        <img src="images/exp-fishing-catch.webp" alt="Gość trzymający dużego karpia złowionego w stawie" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🎣 Wędkowanie w naszym stawie</h3>
+                            <p>Zarzuć wędkę w naszym dobrze zarybionym stawie pełnym karpi, amurów i jesiotrów. Odpowiednie dla wszystkich poziomów zaawansowania — zarówno dla początkujących, jak i doświadczonych wędkarzy. Dostępne łodzie wiosłowe i rowery wodne.</p>
+                            <a href="contact.html" class="cta-button">Zapytaj o wędkowanie &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-pool.webp" alt="Niebieski basen odkryty na terenie gospodarstwa" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🏊 Basen</h3>
+                            <p>Ochłodź się w naszym odkrytym basenie wśród drzew. Drewniany taras obok to świetne miejsce do relaksu w słoneczne dni. Dostępny w sezonie letnim.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-horses.webp" alt="Dwa konie na pastwisku w Agroturystyce BRZOZA" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🐴 Jazda konna i przejażdżki bryczką</h3>
+                            <p>Nasze przyjazne konie są wychowywane wśród ludzi i bezpieczne dla każdego wieku. Oferujemy lekcje jazdy, lonżowanie, przejażdżki z przewodnikiem, przejażdżki bryczką i zimą kuligi.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-quads.webp" alt="Dzieci jeżdżące quadami na torze" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🏍️ Tor quadów</h3>
+                            <p>Nasz tor ze ścianami z opon wije się przez brzozowy las — odpowiedni dla dzieci i dorosłych. Kaski zapewnione, doświadczenie nie jest wymagane. Ulubiona atrakcja każdej grupy wiekowej.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-pond-view.webp" alt="Malowniczy widok na staw wędkarski otoczony drzewami" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🛶 Łodzie i rowery wodne</h3>
+                            <p>Odkrywaj staw we własnym tempie w jednej z naszych łodzi wiosłowych lub rowerów wodnych. Relaksujący sposób na spędzenie poranka lub popołudnia na wodzie.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-basketball.webp" alt="Boisko do koszykówki na terenie gospodarstwa" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>⚽ Boiska sportowe</h3>
+                            <p>Bądź aktywny na naszym zewnętrznym boisku do koszykówki oraz mini boisku do siatkówki i piłki nożnej. Świetne dla grup, które chcą rozegrać przyjacielski mecz na świeżym powietrzu.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- English activities grid -->
+                <div class="activities-grid activities-en">
+                    <article class="activity-card featured">
+                        <img src="images/exp-fishing-catch.webp" alt="Guest holding a large carp caught in the farm pond" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🎣 Fishing in Our Stocked Pond</h3>
+                            <p>Cast a line in our well-stocked pond teeming with carp, grass carp, and sturgeon. Suitable for all skill levels — beginners and seasoned anglers alike. Rowing boats and pedal boats available to get out on the water.</p>
+                            <a href="contact.html" class="cta-button">Ask About Fishing &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-pool.webp" alt="Blue outdoor swimming pool on the farm" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🏊 Swimming Pool</h3>
+                            <p>Cool down in our outdoor pool set among the trees. A wooden deck alongside makes it a great spot to relax on sunny days. Available in summer season.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-horses.webp" alt="Two horses in the paddock at Agroturystyka BRZOZA" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🐴 Horse Riding &amp; Carriage Rides</h3>
+                            <p>Our friendly horses are raised around people and safe for all ages. We offer riding lessons, lunge line training, guided trail rides, horse-drawn carriage rides, and winter sleigh rides.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-quads.webp" alt="Children riding quad bikes on a dirt track" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🏍️ Quad Bike Track</h3>
+                            <p>Our tyre-lined dirt track winds through a birch-lined course — suitable for kids and adults. Helmets provided, no experience needed. A firm favourite with every age group.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-pond-view.webp" alt="Scenic view of the fishing pond surrounded by trees" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>🛶 Boats &amp; Pedal Boats</h3>
+                            <p>Explore the pond at your own pace in one of our rowing boats or pedal boats. A relaxing way to spend a morning or afternoon on the water.</p>
+                        </div>
+                    </article>
+                    <article class="activity-card">
+                        <img src="images/exp-basketball.webp" alt="Basketball hoop on the farm grounds" loading="lazy">
+                        <div class="activity-card-body">
+                            <h3>⚽ Sports Fields</h3>
+                            <p>Stay active on our outdoor basketball court and mini volleyball &amp; football pitch. Great for groups who want a friendly match in the fresh air.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <hr class="section-divider">
+                <h3 style="text-align:center; color: var(--color-primary-green); margin-bottom: var(--spacing-small);"><span class="lang-pl-only">Dostępne również</span><span class="lang-en-only">Also Available</span></h3>
+                
+                <!-- Polish extras list -->
+                <div class="activity-list activity-list-pl">
+                    <div class="activity-list-item"><span class="icon">🚲</span><div><h4>Wypożyczalnia rowerów</h4><p>Odkrywaj okolicę na dwóch kółkach.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🎯</span><div><h4>Strzelnica</h4><p>Strzelnica pneumatyczna — zabawa dla dorosłych i starszych dzieci.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🐄</span><div><h4>Zwierzeta gospodarskie</h4><p>Poznaj nasze zwierzęta — wychowywane wśród ludzi i przyjazne dzieciom.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🥾</span><div><h4>Spacery na łonie natury</h4><p>3,5 ha zalesionego terenu do swobodnego spacerowania.</p></div></div>
+                </div>
+                
+                <!-- English extras list -->
+                <div class="activity-list activity-list-en">
+                    <div class="activity-list-item"><span class="icon">🚲</span><div><h4>Bicycle Hire</h4><p>Explore the surrounding countryside on two wheels.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🎯</span><div><h4>Shooting Range</h4><p>Pneumatic air rifle range — fun for adults and older kids.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🐄</span><div><h4>Farm Animals</h4><p>Meet our animals — raised around people and child-friendly.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🥾</span><div><h4>Nature Walks</h4><p>3.5 ha of wooded grounds to wander freely.</p></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2 — Kids' Fun (Polish/English) -->
+        <div class="tab-panel" id="tab-kids">
+            <section class="container padding-y-large">
+                <h2 class="section-title-pl">Atrakcje dla dzieci</h2>
+                <h2 class="section-title-en">Kids' Fun</h2>
+                <p class="section-subtitle-pl">Uwielbiamy gościć rodziny. Od dmuchańców po quady i zwierzęta gospodarskie — dzieci nigdy nie nudzą się w BRZOZIE.</p>
+                <p class="section-subtitle-en">We love welcoming families. From bouncy castles to quad bikes and farm animals, kids never run out of things to do at BRZOZA.</p>
+                
+                <div class="activities-grid activities-pl">
+                    <article class="activity-card featured"><img src="images/exp-bouncy.webp" alt="Duża dmuchana zjeżdżalnia" loading="lazy"><div class="activity-card-body"><h3>🎪 Dmuchańce i zjeżdżalnia</h3><p>Nasza ogromna dmuchana zjeżdżalnia w kształcie ryby to ogromny hit wśród młodszych gości. Ustawiona na terenie w sezonie letnim zapewnia dzieciom godziny zabawy.</p></div></article>
+                    <article class="activity-card"><img src="images/exp-quads.webp" alt="Dziecko na mini quadzie" loading="lazy"><div class="activity-card-body"><h3>🏍️ Mini quady</h3><p>Mamy quady w rozmiarze dziecięcym oraz modele dla dorosłych. Kaski zawsze zapewnione. Tor jest przyjazny dla początkujących.</p></div></article>
+                    <article class="activity-card"><img src="images/exp-horses.webp" alt="Konie na farmie" loading="lazy"><div class="activity-card-body"><h3>🐴 Poznaj konie</h3><p>Nasze konie są spokojne i przyjazne. Dzieci mogą je głaskać, karmić i jeździć pod opieką.</p></div></article>
+                    <article class="activity-card"><img src="images/exp-pool.webp" alt="Basen z brodzikiem" loading="lazy"><div class="activity-card-body"><h3>🏊 Basen i brodzik</h3><p>Główny basen dla starszych dzieci oraz mały brodzik dla maluchów — rodzice mogą odpocząć w pobliżu.</p></div></article>
+                </div>
+                <div class="activities-grid activities-en">
+                    <article class="activity-card featured"><img src="images/exp-bouncy.webp" alt="Large colourful inflatable slide" loading="lazy"><div class="activity-card-body"><h3>🎪 Bouncy Castle &amp; Inflatable Slide</h3><p>Our giant fish-themed inflatable slide and bouncy castle is a massive hit with younger guests. Set up on the grounds during the summer season.</p></div></article>
+                    <article class="activity-card"><img src="images/exp-quads.webp" alt="Child riding a mini quad bike" loading="lazy"><div class="activity-card-body"><h3>🏍️ Mini Quad Bikes</h3><p>We have kid-sized quads alongside adult models. Helmets always provided. The track is beginner-friendly.</p></div></article>
+                    <article class="activity-card"><img src="images/exp-horses.webp" alt="Horses on the farm" loading="lazy"><div class="activity-card-body"><h3>🐴 Meet the Horses</h3><p>Our horses are calm and people-friendly. Children can pet, feed, and ride them under supervision.</p></div></article>
+                    <article class="activity-card"><img src="images/exp-pool.webp" alt="Pool with paddling area" loading="lazy"><div class="activity-card-body"><h3>🏊 Pool &amp; Paddling Area</h3><p>The main pool is great for older kids, and we have a small paddling pool for toddlers.</p></div></article>
+                </div>
+                
+                <hr class="section-divider">
+                <h3 style="text-align:center; color: var(--color-primary-green);"><span class="lang-pl-only">Więcej dla dzieci</span><span class="lang-en-only">More for Kids</span></h3>
+                <div class="activity-list activity-list-pl"><div class="activity-list-item"><span class="icon">🎮</span><div><h4>PlayStation</h4><p>Gry w środku na deszczowe dni.</p></div></div><div class="activity-list-item"><span class="icon">⚽</span><div><h4>Piłkarzyki</h4><p>Klasyczna zabawa w środku.</p></div></div><div class="activity-list-item"><span class="icon">🐄</span><div><h4>Zwierzeta</h4><p>Przyjazne zwierzęta do interakcji.</p></div></div></div>
+                <div class="activity-list activity-list-en"><div class="activity-list-item"><span class="icon">🎮</span><div><h4>PlayStation Console</h4><p>Indoor gaming for rainy days.</p></div></div><div class="activity-list-item"><span class="icon">⚽</span><div><h4>Table Football</h4><p>Classic indoor fun.</p></div></div><div class="activity-list-item"><span class="icon">🐄</span><div><h4>Farm Animals</h4><p>Safe, friendly animals kids can interact with.</p></div></div></div>
+            </section>
+        </div>
+
+        <!-- TAB 3 — Events & Groups (Polish/English) -->
+        <div class="tab-panel" id="tab-events">
+            <section class="container padding-y-large">
+                <h2 class="section-title-pl">Eventy i pakiety grupowe</h2>
+                <h2 class="section-title-en">Events &amp; Group Packages</h2>
+                <p class="section-subtitle-pl">Organizowaliśmy przyjęcia urodzinowe, wycieczki szkolne, integracje firmowe i zjazdy rodzinne. Nasz teren ma przestrzeń i udogodnienia, aby każde spotkanie było niezapomniane.</p>
+                <p class="section-subtitle-en">We've hosted birthday parties, school trips, corporate retreats, and family reunions. Our grounds have the space and facilities to make any gathering memorable.</p>
+                
+                <div class="event-packages event-packages-pl">
+                    <div class="event-package"><h3>🎂 Przyjęcie urodzinowe</h3><ul><li>Korzystanie z grilla i miejsca na ognisko</li><li>Dostęp do dmuchańca</li><li>Przejażdżki quadami dla dzieci</li><li>Korzystanie z basenu (lato)</li><li>Miejsca siedzące dla grup</li><li>Możliwość noclegu</li></ul><a href="contact.html" class="cta-button">Zapytaj &rarr;</a></div>
+                    <div class="event-package"><h3>🏫 Wycieczka szkolna</h3><ul><li>Wizyta u zwierząt gospodarskich</li><li>Jazda konna / przejażdżki bryczką</li><li>Tor quadów</li><li>Opcja obiadu z grilla</li><li>Boiska sportowe</li><li>Duża pojemność grup</li></ul><a href="contact.html" class="cta-button">Zapytaj &rarr;</a></div>
+                    <div class="event-package"><h3>🏢 Integracja firmowa</h3><ul><li>Nocleg dla max 30 osób</li><li>Aktywności zespołowe: quady, wędkowanie, sport</li><li>Wieczory przy grillu i ognisku</li><li>Spokojne otoczenie</li><li>10 km od Torunia</li><li>Elastyczne stawki wielodniowe</li></ul><a href="contact.html" class="cta-button">Zapytaj &rarr;</a></div>
+                    <div class="event-package"><h3>🔥 Wieczór z grillem i ogniskiem</h3><ul><li>Dedykowane miejsce na ognisko i grilla</li><li>Miejsca siedzące wśród brzóz</li><li>Dostępne dla prywatnych grup</li><li>Możliwość noclegu</li><li>Opcja cateringu</li></ul><a href="contact.html" class="cta-button">Zapytaj &rarr;</a></div>
+                </div>
+                <div class="event-packages event-packages-en">
+                    <div class="event-package"><h3>🎂 Birthday Party</h3><ul><li>Use of the BBQ &amp; fire pit area</li><li>Bouncy castle access</li><li>Quad bike rides for kids</li><li>Pool use (summer)</li><li>Outdoor seating for groups</li><li>Accommodation available</li></ul><a href="contact.html" class="cta-button">Enquire &rarr;</a></div>
+                    <div class="event-package"><h3>🏫 School Trip</h3><ul><li>Farm animal visits</li><li>Horse riding / carriage rides</li><li>Quad bike track</li><li>BBQ lunch option</li><li>Sports fields</li><li>Large group capacity</li></ul><a href="contact.html" class="cta-button">Enquire &rarr;</a></div>
+                    <div class="event-package"><h3>🏢 Corporate Retreat</h3><ul><li>Accommodation for up to 30 people</li><li>Team activities: quads, fishing, sports</li><li>BBQ &amp; bonfire evenings</li><li>Quiet surroundings for focus</li><li>10 km from Toruń city</li><li>Flexible multi-day rates</li></ul><a href="contact.html" class="cta-button">Enquire &rarr;</a></div>
+                    <div class="event-package"><h3>🔥 BBQ &amp; Bonfire Evening</h3><ul><li>Dedicated fire pit &amp; grill area</li><li>Outdoor seating among birch trees</li><li>Available for private groups</li><li>Combine with overnight stay</li><li>Catering options available</li></ul><a href="contact.html" class="cta-button">Enquire &rarr;</a></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 4 — Indoor & Rainy Days (Polish/English) -->
+        <div class="tab-panel" id="tab-indoor">
+            <section class="container padding-y-large">
+                <h2 class="section-title-pl">Aktywności wewnątrz i w deszczowe dni</h2>
+                <h2 class="section-title-en">Indoor &amp; Rainy Day Activities</h2>
+                <p class="section-subtitle-pl">Zła pogoda? Nie ma problemu. Jest mnóstwo rzeczy, które zajmą wszystkich w środku.</p>
+                <p class="section-subtitle-en">Bad weather? No problem. There's plenty to keep everyone busy inside.</p>
+                
+                <div class="activity-list activity-list-pl" style="max-width: 800px; margin: 0 auto var(--spacing-large);">
+                    <div class="activity-list-item"><span class="icon">🎮</span><div><h4>PlayStation</h4><p>Gry dla dzieci i dorosłych — świetne na wieczory lub deszczowe dni.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">⚽</span><div><h4>Piłkarzyki</h4><p>Klasyczny stół do piłkarzyków — zawsze przyciąga tłumy.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🍳</span><div><h4>Kuchnia do samodzielnego gotowania</h4><p>W pełni wyposażona kuchnia — gotujcie razem jako rodzina lub grupa.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">📶</span><div><h4>Darmowe Wi-Fi</h4><p>Szybkie Wi-Fi na terenie całego gospodarstwa — bądź w kontakcie, gdy potrzebujesz.</p></div></div>
+                </div>
+                <div class="activity-list activity-list-en" style="max-width: 800px; margin: 0 auto var(--spacing-large);">
+                    <div class="activity-list-item"><span class="icon">🎮</span><div><h4>PlayStation Console</h4><p>Gaming for kids and adults — great for evenings or wet days.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">⚽</span><div><h4>Table Football</h4><p>Classic foosball table — always gets a crowd going.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">🍳</span><div><h4>Self-Catering Kitchen</h4><p>Fully equipped kitchen — cook together as a family or group.</p></div></div>
+                    <div class="activity-list-item"><span class="icon">📶</span><div><h4>Free Wi-Fi</h4><p>Fast Wi-Fi across the farm — stay connected when you need to.</p></div></div>
+                </div>
+                
+                <div style="background: var(--color-light-background); border-radius: 10px; padding: var(--spacing-medium); max-width: 600px; margin: 0 auto; text-align: center;">
+                    <p class="tip-box-pl">💡 <strong>Wskazówka:</strong> Stare Miasto w Toruniu jest oddalone o zaledwie 10 km — deszczowy dzień to doskonała wymówka, aby zwiedzić gotycką architekturę, muzea i słynne warsztaty piernikowe jednego z najpiękniejszych miast Polski.</p>
+                    <p class="tip-box-en">💡 <strong>Tip:</strong> Toruń Old Town is just 10 km away — a rainy day is a perfect excuse to explore the Gothic architecture, museums, and the famous gingerbread workshops of one of Poland's most beautiful cities.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- CTA banner -->
+        <div class="cta-banner">
+            <div class="container">
+                <div class="cta-banner-pl">
+                    <h2>Gotowy, aby zarezerwować swoje przeżycia?</h2>
+                    <p>Skontaktuj się z nami, aby sprawdzić dostępność lub zapytać o niestandardowe pakiety grupowe.</p>
+                    <a href="contact.html" class="cta-button">Skontaktuj się &rarr;</a>
+                </div>
+                <div class="cta-banner-en">
+                    <h2>Ready to book your experience?</h2>
+                    <p>Contact us to check availability or ask about custom group packages.</p>
+                    <a href="contact.html" class="cta-button">Get in Touch &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ── FOOTER (bilingual) ─────────────────────────────────────── -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Agroturystyka BRZOZA</h4>
+                <p class="lang-pl-only">Noclegi Toruń. Komfortowy wypoczynek i niezapomniane atrakcje dla grup i rodzin.</p>
+                <p class="lang-en-only">Accommodation Toruń. Affordable stays and memorable recreational events for groups and families.</p>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-pl-only">Szybkie linki</span><span class="lang-en-only">Quick Links</span></h4>
+                <ul>
+                    <li><a href="accommodations.html"><span class="lang-pl-only">Noclegi</span><span class="lang-en-only">Accommodation</span></a></li>
+                    <li><a href="experiences.html"><span class="lang-pl-only">Atrakcje</span><span class="lang-en-only">Experiences</span></a></li>
+                    <li><a href="contact.html"><span class="lang-pl-only">Kontakt</span><span class="lang-en-only">Contact</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-pl-only">Kontakt</span><span class="lang-en-only">Contact</span></h4>
+                <p>Email: <a href="mailto:info@bugajski.pl">info@bugajski.pl</a></p>
+                <p>Phone: <a href="tel:+48XXXXXXXXX">+48 601845955</a></p>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-pl-only">Obserwuj nas</span><span class="lang-en-only">Follow Us</span></h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Agroturystyka-Brzoza/100063647692455/#" target="_blank" rel="noopener noreferrer" class="social-icon facebook-icon">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year"></span> Agroturystyka BRZOZA. <span class="lang-pl-only">Wszelkie prawa zastrzeżone.</span><span class="lang-en-only">All rights reserved.</span> | <a href="https://www.bugajski.pl">www.bugajski.pl</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        // Mobile nav
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navigation-menu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('nav-open');
+            });
+        }
+
+        // Language switching
+        const body = document.body;
+        const langPlBtn = document.getElementById('lang-pl');
+        const langEnBtn = document.getElementById('lang-en');
+
+        function setLanguage(lang) {
+            body.setAttribute('data-lang', lang);
+            if (lang === 'pl') {
+                langPlBtn.classList.add('active');
+                langPlBtn.setAttribute('aria-pressed', 'true');
+                langEnBtn.classList.remove('active');
+                langEnBtn.setAttribute('aria-pressed', 'false');
+                document.documentElement.lang = 'pl';
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Quady, jazda konna, wędkowanie, basen, grill, dmuchańce i wiele więcej. Atrakcje dla rodzin i grup w Agroturystyce BRZOZA pod Toruniem.');
+                document.title = 'Atrakcje - Agroturystyka BRZOZA | Atrakcje Toruń';
+            } else {
+                langEnBtn.classList.add('active');
+                langEnBtn.setAttribute('aria-pressed', 'true');
+                langPlBtn.classList.remove('active');
+                langPlBtn.setAttribute('aria-pressed', 'false');
+                document.documentElement.lang = 'en';
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Quad bikes, horse riding, fishing, swimming pool, BBQ, bouncy castles and more. Family and group activities at Agroturystyka BRZOZA near Toruń.');
+                document.title = 'Experiences - Agroturystyka BRZOZA | Attractions Toruń';
+            }
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        langPlBtn.addEventListener('click', () => setLanguage('pl'));
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+
+        const savedLang = localStorage.getItem('preferredLang');
+        if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
+            setLanguage(savedLang);
+        } else {
+            setLanguage('pl');
+        }
+
+        // Tab switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        function switchTab(tabId) {
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('is-active'));
+            const activeBtns = document.querySelectorAll(`.tab-btn[data-tab="${tabId}"]`);
+            activeBtns.forEach(btn => btn.classList.add('active'));
+            document.getElementById('tab-' + tabId).classList.add('is-active');
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+                switchTab(target);
+                document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+
+</body>
+</html>
